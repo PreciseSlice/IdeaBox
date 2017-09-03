@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-	 http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
-   <link rel="stylesheet"
-	href="styles.css">
-	<title>Idea Box</title>
-</head>
-<body>
-	<section class="top">
-		<article class="top">
-			<h1 class="header"> <span>Idea</span>Box</h1>
-			<input class="idea-input"  placeholder="Title">
-			<input class="body-input" placeholder="Body">
-			<button class="button">save </button>
-		</article>
-	</section>
-
-	<section class="bottom">
-		
-	</section>
+	<head>
+   		<link rel="stylesheet" type="text/css" href="reset.css"> <!--stylesheet by Eric Meyer http://meyerweb.com/eric/tools/css/reset/-->
+   		<link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto+Slab:700" rel="stylesheet">
+		<link rel="stylesheet" type="text/css" href="styles.css">	
+		<title>Idea Box</title>
+	</head>
 	
-<script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
-	<script src="form.js"></script>
+	<body>
 
-</body>
+		<section class="top">
+			<h1 class="header"> idea<span class="box-text">box</span></h1>
+			<form>
+				<input type="text" class="idea-input"  placeholder="Title">
+				<input type="text" class="body-input" placeholder="Body">
+				<button>save</button>
+			</form>
+		</section>
+
+		<section class="bottom">
+			
+			<input type="text" class="search" placeholder="Search">
+
+			<section class="cards">
+			</section>
+			
+		</section>
+
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script type="text/javascript" src="jquery-3.2.1.min.js"></script>
+		<script src="script.js"></script>
+
+	</body>
 </html>
