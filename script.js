@@ -6,9 +6,6 @@ $('.bottom').on('click', '.delete', userDeleteBtn);
 $('.cards').on('click', '.upvote', upvote);
 $('.cards').on('click', '.downvote', downvote);
 
-// var quality = ["swill", "plausible", "plausible", "genius" ]
-// for(var i =0; i<quality.length; i++)
-
 function sendToStorage() {
   localStorage.setItem('ideaCard.id', JSON.stringify(globalArray))
 }
@@ -40,7 +37,7 @@ function userDeleteBtn() {
   localStorage.removeItem($(this).parent().prop('id'));
 }
 
-   
+
 
 // window.localStorage.setItem()
 
