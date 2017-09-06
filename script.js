@@ -9,8 +9,6 @@ function userDeleteBtn(e) {
   $(this).parents('.idea').remove() 
 }
 
-
-
 function userEnterBtn(e){
   e.preventDefault(); 
   var title = $('.idea-input').val();
@@ -19,7 +17,7 @@ function userEnterBtn(e){
   $('.cards').prepend(
       `<article class='idea'>
          <h2>${title}</h2> 
-         <p>${body}</p> <hr />
+         <p>${body}</p> 
          <button class='upvote'></button>
          <button class='downvote'></button>
          <button class='delete'></button>
