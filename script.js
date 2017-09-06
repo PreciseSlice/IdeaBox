@@ -11,7 +11,7 @@ function userEnterBtn(e){
   var title = $('.idea-input').val();
   var body = $('.body-input').val();
 
-  $('.bottom').prepend(
+  $('.cards').prepend(
       `<article class='idea'>
        <h2>${title}</h2> 
        <p>${body}</p> <hr />
