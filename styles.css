@@ -14,15 +14,16 @@ body {
 h1 {
 	color: #00A79D;
 	font-family: 'Roboto Slab', serif;
-	font-size: 2em;
+	font-size: 3em;
 	font-weight: 700; 
 	padding: 0 0 2% 0; 
 	text-align: center;
 }
 
 p {
-	color: #939598
-	font-family:'Open Sans', regular 40;
+	color: #939598;
+	font-family:'Open Sans';
+	font-weight: 400;
 }
 
 form {
@@ -31,6 +32,7 @@ form {
     flex-direction:column;
     justify-content:center;
     width: 40%;
+    margin: auto;
 }
 
 .save-btn {
@@ -40,7 +42,8 @@ form {
 	font-size: 1em;
 	font-weight: 400;
 	padding: 1%;
-	width: 102.8%;
+	width: 100%;
+	margin:auto;
 }
 
 .save-btn:hover {
@@ -54,7 +57,7 @@ form {
 	background-color: #E5F3F2;
 	display:flex;
 	flex-direction: column;
-	height: 40%;
+	height: 35%;
 	justify-content:center;
 	width: 100%;
 }
@@ -64,6 +67,7 @@ form {
 }
 
 .idea-input {
+	border: 1px solid #939598;
 	color: #939598;
 	font-size: 1em;
 	margin-bottom: 3%;
@@ -72,6 +76,7 @@ form {
 }
 
 .body-input {
+	border: 1px solid #939598;
 	color: #939598;
 	font-size: 1em;
 	margin-bottom: 3%;
@@ -79,78 +84,86 @@ form {
 	width: 100%;
 }
 
-section.bottom {
-	height: 60%;
+.search {
+	border: 1px solid #939598;
+	color: #939598;
+	font-size: 1em;
+	margin: 3% 0 2% 30%;
+	padding: .45%;
+	width: 40%;
+}
+
+.bottom {
+	height: 65%;
 	width: 100%;
 }
 
-article.idea {
-	border: solid #607D8B;
-	box-sizing: border-box;
-	background-color: #FFFFFF;
-	height: 25%;
-	margin: 25px;
+.cards {
+	margin:auto;
+	width: 40%;
 }
 
+.idea  {
+	background-color: #FFFFFF;
+	border: solid #607D8B;
+	box-sizing: border-box;
+	
+}
 
 .upvote {
 	background: none;
-	background-image: url("/Users/valentinovalentin/turing/mod1/IdeaBox/FEE-ideabox-icon-assets/upvote.svg"); 
-	width: 25px;
-	height: 25px;
+	background-image: url("FEE-ideabox-icon-assets/upvote.svg"); 
 	border: none;
 	border-radius: 100%;
-
+	height: 25px;
+	width: 25px;
 }
 
 .upvote:hover {
-	background-image: url("/Users/valentinovalentin/turing/mod1/IdeaBox/FEE-ideabox-icon-assets/upvote-hover.svg");
+	background-image: url("FEE-ideabox-icon-assets/upvote-hover.svg");
 
 }
 
 .downvote {
 	background: none;
-	background-image: url(/Users/valentinovalentin/turing/mod1/IdeaBox/FEE-ideabox-icon-assets/downvote.svg);
-	width: 25px;
-	height: 25px;
+	background-image: url("FEE-ideabox-icon-assets/downvote.svg");
 	border: none;
 	border-radius: 100%;
+	height: 25px;
+	width: 25px;
 }
 
 .downvote:hover {
-	background-image: url(/Users/valentinovalentin/turing/mod1/IdeaBox/FEE-ideabox-icon-assets/downvote-hover.svg);
+	background-image: url("FEE-ideabox-icon-assets/downvote-hover.svg");
 }
 
 .delete {
 	background: none;
-	background-image: url("/Users/valentinovalentin/turing/mod1/IdeaBox/FEE-ideabox-icon-assets/delete.svg");
-	width: 25px;
-	height: 25px;
+	background-image: url("FEE-ideabox-icon-assets/delete.svg");
 	border: none;
 	border-radius: 100%;
+	height: 25px;
+	width: 25px;
 }
 
 .delete:hover {
-	background-image: url("/Users/valentinovalentin/turing/mod1/IdeaBox/FEE-ideabox-icon-assets/delete-hover.svg");
+	background-image: url("FEE-ideabox-icon-assets/delete-hover.svg");
 }
 
+@media (max-width: 900px) {
 
+	body {
+		flex-direction: 
+		column
+	}
 
+	h1 {
+		font-size: 6em;
+		 
+	}
 
+	.bottom {
+		overflow-y: unset;
+	}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+}
