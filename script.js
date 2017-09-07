@@ -37,36 +37,11 @@ function userDeleteBtn() {
   localStorage.removeItem($(this).parent().prop('id'));
 }
 
-
-
-// window.localStorage.setItem()
-
-// contenteditable="true"
-
-// function userEnterBtn(e){
-//   e.preventDefault(); 
-//   var title = $('.idea-input').val();
-//   var body = $('.body-input').val();
-
-//   $('.cards').prepend(
-//       `<article class='idea'>
-//          <h2>${title}</h2> 
-//          <p>${body}</p> <hr />
-//          <button class='upvote'></button>
-//          <button class='downvote'></button>
-//          <button class='delete'></button>
-//          <h3>Quality:<h3>
-//       </article>`);
-//   $('.idea-input').val("");
-//   $('.body-input').val("");
-//   $('.idea-input').focus();
-//   $('.button').attr("disabled", true);
-// }
-
 function userEnterBtn(e){
   e.preventDefault();
   var title = $('.idea-input').val();
   var body = $('.body-input').val();
+
   ideaCard = new Idea(title,body);
   globalArray.push(ideaCard);
   console.log(ideaCard);
@@ -74,6 +49,7 @@ function userEnterBtn(e){
       `<article id='${ideaCard.id}' class='idea'>
          <h2>${ideaCard.title}</h2> 
          <p>${ideaCard.body}</p> <hr />
+
          <button class='upvote'></button>
          <button class='downvote'></button>
          <button class='delete'></button>
