@@ -1,4 +1,4 @@
-var globalArray = []
+var globalArray = [];
 var ideaCard = {};
 
 $('button').on('click', userEnterBtn);
@@ -34,9 +34,9 @@ function sendToStorage() {
   // localStorage.setItem('ideaCard.quality', JSON.stringify
 }
 
-
 function getFromStorage() {
   globalArray = JSON.parse(localStorage.getItem("ideaCard")); 
+
 }
 
 function removeFromStorage(id) {
@@ -81,16 +81,20 @@ function userEnterBtn(e){
   globalArray.push(ideaCard);
   console.log(ideaCard);
     $('.cards').prepend(
-      `<article id='${ideaCard.id}' class='idea'>
-         <h2 contenteditable="true"> ${ideaCard.title}</h2> 
-         <p contenteditable="true"> ${ideaCard.body}</p>
-         <h2>${ideaCard.title}</h2> 
-         <p>${ideaCard.body}</p> <hr />
-         <button class='upvote'></button>
-         <button class='downvote'></button>
-         <button class='delete'></button>
-         <h3>Quality: ${ideaCard.quality}<h3>
+
+      `<article id='${ideaCard.id}' class='idea' role="container for idea cards">
+        <div class="top-of-card" role="container for styling top of idea cards">
+          <h2>${ideaCard.title}</h2> 
+          <button class='delete'></button>
+        </div>
+        <p>${ideaCard.body}</p>
+        <div class="bottom-of-card" role="container for styling bottom of idea cards">  
+          <button class='upvote'></button>
+          <button class='downvote'></button>
+          <h3>Quality: ${ideaCard.quality}<h3>
+        </div>
       </article>`);
+  
   $('.idea-input').val("");
   $('.body-input').val("");
   $('.idea-input').focus();
@@ -121,7 +125,7 @@ function upvote() {
 
 
   } else if(ideaCard.quality === 'plausible'){
-    console.log('else if')
+    console.log('else if');
     $(this).parent().find('h3').text('genius');
     ideaCard.quality = ('genius');
     sendToStorage();
@@ -139,14 +143,3 @@ function downvote() {
     sendToStorage();
   }
 }
-
-
-
-
-
-
-
-
-
-
-
