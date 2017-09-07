@@ -1,4 +1,4 @@
-var globalArray = []
+var globalArray = [];
 var ideaCard = {};
 
 $('button').on('click', userEnterBtn);
@@ -7,13 +7,13 @@ $('.cards').on('click', '.upvote', upvote);
 $('.cards').on('click', '.downvote', downvote);
 
 function sendToStorage() {
-  localStorage.setItem('ideaCard.id', JSON.stringify(globalArray))
+  localStorage.setItem('ideaCard.id', JSON.stringify(globalArray));
 }
 
 // send objects.. pass in the id and pass in the ideaCard object
 
 function getFromStorage() {
-  globalArray = JSON.parse(localStorage.getItem("idArray")); 
+  globalArray = JSON.parse(localStorage.getItem("idCard")); 
 }
 
 // for loop and interate thru the global array and getfromstorage(id)
@@ -33,7 +33,7 @@ function Idea(title, body) {
 
 function userDeleteBtn() {
   console.log($(this).parent());
-  $(this).parents('.idea').remove();
+  $(this).parent('.idea').remove();
   localStorage.removeItem($(this).parent().prop('id'));
 }
 
@@ -46,14 +46,17 @@ function userEnterBtn(e){
   globalArray.push(ideaCard);
   console.log(ideaCard);
     $('.cards').prepend(
-      `<article id='${ideaCard.id}' class='idea'>
-         <h2>${ideaCard.title}</h2> 
-         <p>${ideaCard.body}</p> <hr />
-
-         <button class='upvote'></button>
-         <button class='downvote'></button>
-         <button class='delete'></button>
-         <h3>Quality: ${ideaCard.quality}<h3>
+      `<article id='${ideaCard.id}' class='idea' role="container for idea cards">
+        <div class="top-of-card" role="container for styling top of idea cards">
+          <h2>${ideaCard.title}</h2> 
+          <button class='delete'></button>
+        </div>
+        <p>${ideaCard.body}</p>
+        <div class="bottom-of-card" role="container for styling bottom of idea cards">  
+          <button class='upvote'></button>
+          <button class='downvote'></button>
+          <h3>Quality: ${ideaCard.quality}<h3>
+        </div>
       </article>`);
   $('.idea-input').val("");
   $('.body-input').val("");
@@ -68,7 +71,7 @@ function upvote() {
    ideaCard.quality = ('plausible');
 
   } else if(ideaCard.quality === 'plausible'){
-    console.log('else if')
+    console.log('else if');
     $(this).parent().find('h3').text('genius');
     ideaCard.quality = ('genius');
   } 
@@ -84,14 +87,3 @@ function downvote() {
     ideaCard.quality = ('swill');
   }
 }
-
-
-
-
-
-
-
-
-
-
-
