@@ -6,7 +6,6 @@ $('.bottom').on('click', '.delete', userDeleteBtn);
 $('.cards').on('click', '.upvote', upvote);
 $('.cards').on('click', '.downvote', downvote);
 
-
   getFromStorage();
   prependStoredCards();
 
@@ -29,13 +28,6 @@ for (var i = 0; i<$('article').length ; i++){
     }
   }
 }
-
-
- 
-
-
-
-
 
 function sendToStorage() {
   localStorage.setItem('ideaCard', JSON.stringify(globalArray))
@@ -79,12 +71,12 @@ function userDeleteBtn(event) {
   removeFromStorage(id);
   deleteDomCard.remove();
 }
-   
 
 function userEnterBtn(e){
   e.preventDefault();
   var title = $('.idea-input').val();
   var body = $('.body-input').val();
+
   ideaCard = new Idea(title,body);
   globalArray.push(ideaCard);
   console.log(ideaCard);
@@ -92,6 +84,8 @@ function userEnterBtn(e){
       `<article id='${ideaCard.id}' class='idea'>
          <h2 contenteditable="true"> ${ideaCard.title}</h2> 
          <p contenteditable="true"> ${ideaCard.body}</p>
+         <h2>${ideaCard.title}</h2> 
+         <p>${ideaCard.body}</p> <hr />
          <button class='upvote'></button>
          <button class='downvote'></button>
          <button class='delete'></button>
