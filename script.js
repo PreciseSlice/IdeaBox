@@ -6,19 +6,56 @@ $('.bottom').on('click', '.delete', userDeleteBtn);
 $('.cards').on('click', '.upvote', upvote);
 $('.cards').on('click', '.downvote', downvote);
 
-// var quality = ["swill", "plausible", "plausible", "genius" ]
-// for(var i =0; i<quality.length; i++)
+
+  getFromStorage();
+  prependStoredCards();
+
+
+$('.search').on('keyup', searchFilter);
+
+
+function searchFilter(){
+  var searchInput = $('.search').val().toLowerCase();
+  console.log(searchInput)
+  var searchTitle = $('h2');
+  var searchBody = $('p');
+
+for (var i = 0; i<$('article').length ; i++){
+  var currentArticle = searchTitle[i].innerHTML + searchBody[i].innerHTML;
+  if (currentArticle.toLowerCase().indexOf(searchInput) > -1){
+    $('article')[i].style.display = "";
+  }else{
+    $('article')[i].style.display = "none";
+    }
+  }
+}
+
+
+ 
+
+
+
+
 
 function sendToStorage() {
-  localStorage.setItem('ideaCard.id', JSON.stringify(globalArray))
+  localStorage.setItem('ideaCard', JSON.stringify(globalArray))
+  // localStorage.setItem('ideaCard.quality', JSON.stringify
 }
 
-// send objects.. pass in the id and pass in the ideaCard object
 
 function getFromStorage() {
-  globalArray = JSON.parse(localStorage.getItem("idArray")); 
+  globalArray = JSON.parse(localStorage.getItem("ideaCard")); 
 }
 
+function removeFromStorage(id) {
+getFromStorage();
+var index = globalArray.findIndex( function(idea) {
+  return idea.id === id;
+});
+ globalArray.splice(index, 1);
+ sendToStorage()
+}
+  
 // for loop and interate thru the global array and getfromstorage(id)
 // append that ideaCard
 
@@ -34,37 +71,15 @@ function Idea(title, body) {
   this.quality='swill';
 }
 
-function userDeleteBtn() {
-  console.log($(this).parent());
-  $(this).parents('.idea').remove();
-  localStorage.removeItem($(this).parent().prop('id'));
+function userDeleteBtn(event) {
+  event.preventDefault();
+  var deleteDomCard = $(this).parents('.idea');
+  var id = deleteDomCard.prop('id');
+  console.log(id)
+  removeFromStorage(id);
+  deleteDomCard.remove();
 }
-
    
-
-// window.localStorage.setItem()
-
-// contenteditable="true"
-
-// function userEnterBtn(e){
-//   e.preventDefault(); 
-//   var title = $('.idea-input').val();
-//   var body = $('.body-input').val();
-
-//   $('.cards').prepend(
-//       `<article class='idea'>
-//          <h2>${title}</h2> 
-//          <p>${body}</p> <hr />
-//          <button class='upvote'></button>
-//          <button class='downvote'></button>
-//          <button class='delete'></button>
-//          <h3>Quality:<h3>
-//       </article>`);
-//   $('.idea-input').val("");
-//   $('.body-input').val("");
-//   $('.idea-input').focus();
-//   $('.button').attr("disabled", true);
-// }
 
 function userEnterBtn(e){
   e.preventDefault();
@@ -75,8 +90,8 @@ function userEnterBtn(e){
   console.log(ideaCard);
     $('.cards').prepend(
       `<article id='${ideaCard.id}' class='idea'>
-         <h2>${ideaCard.title}</h2> 
-         <p>${ideaCard.body}</p> <hr />
+         <h2 contenteditable="true"> ${ideaCard.title}</h2> 
+         <p contenteditable="true"> ${ideaCard.body}</p>
          <button class='upvote'></button>
          <button class='downvote'></button>
          <button class='delete'></button>
@@ -89,15 +104,33 @@ function userEnterBtn(e){
   sendToStorage();
 }
 
+function prependStoredCards () {
+  for (var i = 0; i < globalArray.length; i++) {
+        $('.cards').prepend(
+      `<article id='${globalArray[i].id}' class='idea'>
+         <h2 contenteditable="true"> ${globalArray[i].title}</h2> 
+         <p contenteditable="true"> ${globalArray[i].body}</p>
+         <button class='upvote'></button>
+         <button class='downvote'></button>
+         <button class='delete'></button>
+         <h3>Quality: ${globalArray[i].quality}<h3>
+      </article>`);
+  }
+}
+
 function upvote() {
     if (ideaCard.quality === 'swill') {
    $(this).parent().find('h3').text('plausible');
    ideaCard.quality = ('plausible');
+   sendToStorage();
+   
+
 
   } else if(ideaCard.quality === 'plausible'){
     console.log('else if')
     $(this).parent().find('h3').text('genius');
     ideaCard.quality = ('genius');
+    sendToStorage();
   } 
 }
 
@@ -109,6 +142,7 @@ function downvote() {
   } else if (ideaCard.quality === 'plausible'){
     $(this).parent().find('h3').text('swill');
     ideaCard.quality = ('swill');
+    sendToStorage();
   }
 }
 
